@@ -16,3 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/login','LoginController@index')->name('login');
+Route::post('/login','LoginController@store')->name('login.store');
+
+Route::get('profile/{id}','ProfileController@index')->name('profile')->where(['id' => '[0-9]+']);
