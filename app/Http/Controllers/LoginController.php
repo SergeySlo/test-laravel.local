@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginRequest;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -12,10 +13,18 @@ class LoginController extends Controller
         return view('login');
     }
 
-    public function store(Request $request)
+    public function store(LoginRequest $request)
     {
         if($request->hasFile('avatar')){
             $avatar = 'storage/'.$request->file('avatar')->store('avatars');
+        }else{
+            $avatar = null;
+        }
+
+        if(isset($request->mailing)){
+            $mailing = $request->mailing;
+        }else{
+            $mailing = 0;
         }
 
         $user = User::create([
@@ -25,7 +34,7 @@ class LoginController extends Controller
             'avatar' => $avatar,
             'phone' => $request->phone,
             'sex' => $request->sex,
-            'mailing' => $request->mailing,
+            'mailing' => $mailing,
         ]);
 
         return redirect()->route('profile',$user->id);
