@@ -37,7 +37,7 @@
                 <li class="form__item">
                   <div class="form__title">Пол:</div>
                   <label class='form__inline-label' for="male">Мужской</label>
-                  <input class='form__inline-input' name='sex' id='male' type="radio" value="1">
+                  <input class='form__inline-input' name='sex' id='male' type="radio" value="1" checked>
                   <label class='form__inline-label' for="female">Женский</label>
                   <input class='form__inline-input' name='sex' id='female' type="radio" value="0">
                 </li>
